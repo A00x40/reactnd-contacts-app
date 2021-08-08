@@ -74,6 +74,6 @@ export default function ListContacts (props)  {
 }
 
 ListContacts.propTypes = {
-    contacts : PropTypes.array ,
-    remove : PropTypes.func
+    contacts : PropTypes.array.isRequired ,
+    remove : PropTypes.func.isRequired
 }

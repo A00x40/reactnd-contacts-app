@@ -1,29 +1,20 @@
 import React, { Component } from 'react';
 import ListContacts from "./components/ListContact";
- 
+import * as ContactsAPI from './utils/ContactsAPI';
+
 class App extends Component {
 
   state = {
-    Contacts : [
-      {
-        "id": "karen",
-        "name": "Karen Isgrigg",
-        "handle": "karen_isgrigg",
-        "avatarURL": "http://localhost:5001/karen.jpg"
-      },
-      {
-        "id": "richard",
-        "name": "Richard Kalehoff",
-        "handle": "richardkalehoff",
-        "avatarURL": "http://localhost:5001/richard.jpg"
-      },
-      {
-        "id": "tyler",
-        "name": "Tyler McGinnis",
-        "handle": "tylermcginnis",
-        "avatarURL": "http://localhost:5001/tyler.jpg"
-      }
-     ]
+    contacts: []
+  }
+  
+  componentDidMount () {
+    ContactsAPI.getAll().then( contacts => {
+        console.log( contacts );
+        this.setState( () => ({
+            contacts
+        }))
+    })
   }
 
   removeContact = ( contact ) => {
@@ -39,7 +30,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <ListContacts contacts={this.state.Contacts} remove={this.removeContact} />
+        <ListContacts contacts={this.state.contacts} remove={this.removeContact} />
       </div>
       
     );
