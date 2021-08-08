@@ -1,4 +1,5 @@
 import React , { useState } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 export default function ListContacts (props)  {
@@ -39,6 +40,10 @@ export default function ListContacts (props)  {
                 value={state.query}
                 onChange={(e) => handleChange(e)}
                 />
+                <Link
+                to="/create"
+                className="add-contact"
+                >Add Contact</Link>
             </div>
 
             {
@@ -75,5 +80,5 @@ export default function ListContacts (props)  {
 
 ListContacts.propTypes = {
     contacts : PropTypes.array.isRequired ,
-    remove : PropTypes.func.isRequired
+    remove : PropTypes.func.isRequired 
 }
